@@ -4,9 +4,9 @@ import { MongooseModule } from '@nestjs/mongoose';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ItemsController } from './items/items.controller';
-import { ItemsService } from './items/items.service';
+
 import { ItemsModule } from './items/items.module';
+import { UsersModule } from './users/users.module';
 
 import Config from './config/keys';
 
@@ -14,8 +14,9 @@ import Config from './config/keys';
   imports: [
     MongooseModule.forRoot(Config.mongoURI, { useNewUrlParser: true }),
     ItemsModule,
+    UsersModule,
   ],
-  controllers: [AppController, ItemsController],
-  providers: [AppService, ItemsService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
